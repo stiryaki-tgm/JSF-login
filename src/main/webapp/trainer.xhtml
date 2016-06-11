@@ -16,31 +16,38 @@
 			<p:layoutUnit position="center" closable="false" minSize="100"
 				maxSize="250" collapsible="true">
 				<!-- Our user is already logged in! -->
-				<h:form rendered="#{user.loggedIn}">
+				<h:form>
 					<p:panelGrid columns="2">
 						<f:facet name="header">
 							<h:outputLabel value="Result = left * right" />
 						</f:facet>
-						<!-- TODO
-						outputLabel fuer msg.left
-						outputLabel fuer card.left mit id "left"
-						selbiges fuer msg.right bzw. card.right -->
-
+						
+						<h:outputLabel value="#{msg.left}" />
+						<h:outputLabel id="left" value="#{cardController.card.left}" />
+						
+						<h:outputLabel value="#{msg.right}" />
+						<h:outputLabel id="left" value="#{cardController.card.right}" />
+						
 						<f:facet name="footer">
-							<!-- TODO outputLabel und outputText fuer result -->
+					
+						<h:outputLabel value="your Result:" />
+						<h:outputLabel id="result" value="#{cardController.result}" />
+						
+					
 						</f:facet>
 					</p:panelGrid>
 					<br />
-					<!-- TODO drei buttons: card.show / msg.show, card.next / msg.next, user.logout / msg.logout -->
 					
-					<h:messages layout="table"></h:messages>
+					<p:commandButton action="#{cardController.checkResult}"
+						ajax="false" value="#{msg.show}" />
+					<p:commandButton action="#{cardController.next}"
+						ajax="false" value="#{msg.next}" type="submit" />
+					<p:messages layout="table"/>					
+					
 				</h:form>
-				<!-- Our user hasn't logged in yet! -->
-				<h:form rendered="#{!user.loggedIn}">
-					<p:commandLink action="/loginView.xhtml"
-						value="Please log in first!" ajax="false" />
-				</h:form>
-
+			</p:layoutUnit>
+			<p:layoutUnit header="Status:" position="south" resizable="true" collapsible="true">
+				<h:outputLabel value="#{cardController.message}"></h:outputLabel>
 			</p:layoutUnit>
 		</p:layout>
 	</f:view>

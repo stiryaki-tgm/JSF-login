@@ -8,9 +8,14 @@
   <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  <managed-bean>
-  <managed-bean-name>user</managed-bean-name>
-  <managed-bean-class>model.User</managed-bean-class>
+  <managed-bean-name>cardController</managed-bean-name>
+  <managed-bean-class>controller.CardController</managed-bean-class>
   <managed-bean-scope>session</managed-bean-scope>
+  <managed-property>
+   <property-name>card</property-name>
+   <property-class>model.Card</property-class>
+   <value>#{card}</value>
+  </managed-property>
  </managed-bean>
  <navigation-rule>
   <description>Start with LoginView

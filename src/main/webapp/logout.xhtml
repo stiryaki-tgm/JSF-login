@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>Train your brain</h:head>
+<body>
+	<f:view>
+		<f:loadBundle basename="messages" var="msg"></f:loadBundle>
+		<p:layout fullPage="true">
+			<p:layoutUnit position="north" header="Train your Brain"
+				closable="false" resizable="true" collapsible="true">
+			</p:layoutUnit>
+			<p:layoutUnit position="center" closable="false" minSize="100"
+				maxSize="250" collapsible="true">
+				<h1>You logged out successfully.</h1>
+								<!-- Our user hasn't logged in yet! -->
+				<h:form rendered="#{!user.loggedIn}">
+					<p:commandLink action="/loginView.xhtml"
+						value="Please log in again!" ajax="false" />
+				</h:form>
+			</p:layoutUnit>
+		</p:layout>
+	</f:view>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee         http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+ <managed-bean>
+  <description>Our model for learning cards</description>
+  <managed-bean-name>card</managed-bean-name>
+  <managed-bean-class>model.Card</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>user</managed-bean-name>
+  <managed-bean-class>model.User</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ <navigation-rule>
+  <description>Start with LoginView
+if success forward to trainer.xhtml</description>
+  <display-name>login</display-name>
+  <from-view-id>/loginView.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>success</from-outcome>
+   <if>#{user.loggedIn}</if>
+   <to-view-id>/trainer.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>failed</from-outcome>
+   <if>#{!user.loggedIn}</if>
+   <to-view-id>/failedLoginView.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/</from-view-id>
+  <navigation-case>
+   <if>#{!user.loggedIn}</if>
+   <to-view-id>/failedLoginView.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/trainer.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>next</from-outcome>
+   <if>#{!user.loggedIn}</if>
+   <to-view-id>/failedLoginView.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>show</from-outcome>
+   <if>#{!user.loggedIn}</if>
+   <to-view-id>/failedLoginView.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>show</from-outcome>
+   <if>#{user.loggedIn}</if>
+   <to-view-id>/trainer.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>next</from-outcome>
+   <if>#{user.loggedIn}</if>
+   <to-view-id>/trainer.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>logout</from-outcome>
+   <to-view-id>/logout.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <validator>
+  <validator-id>validator.LoginValidator</validator-id>
+  <validator-class>validator.LoginValidator</validator-class>
+ </validator>
+ <application/>
+</faces-config>

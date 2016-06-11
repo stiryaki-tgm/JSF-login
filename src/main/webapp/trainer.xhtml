@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>Train your brain</h:head>
+<body>
+	<f:view>
+		<f:loadBundle basename="messages" var="msg"></f:loadBundle>
+		<p:layout fullPage="true">
+			<p:layoutUnit position="north" header="Train your Brain"
+				closable="false" resizable="true" collapsible="true">
+			</p:layoutUnit>
+			<p:layoutUnit position="center" closable="false" minSize="100"
+				maxSize="250" collapsible="true">
+				<!-- Our user is already logged in! -->
+				<h:form rendered="#{user.loggedIn}">
+					<p:panelGrid columns="2">
+						<f:facet name="header">
+							<h:outputLabel value="Result = left * right" />
+						</f:facet>
+						<!-- TODO
+						outputLabel fuer msg.left
+						outputLabel fuer card.left mit id "left"
+						selbiges fuer msg.right bzw. card.right -->
+
+						<f:facet name="footer">
+							<!-- TODO outputLabel und outputText fuer result -->
+						</f:facet>
+					</p:panelGrid>
+					<br />
+					<!-- TODO drei buttons: card.show / msg.show, card.next / msg.next, user.logout / msg.logout -->
+					
+					<h:messages layout="table"></h:messages>
+				</h:form>
+				<!-- Our user hasn't logged in yet! -->
+				<h:form rendered="#{!user.loggedIn}">
+					<p:commandLink action="/loginView.xhtml"
+						value="Please log in first!" ajax="false" />
+				</h:form>
+
+			</p:layoutUnit>
+		</p:layout>
+	</f:view>
+</body>
+</html>

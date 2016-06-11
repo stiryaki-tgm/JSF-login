@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#loginView.xhtml" PATH="/loginView.xhtml"
+  SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#loginView.xhtml:0" NAME="item"
+   PATH="/loginView.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success::#trainer.xhtml" NAME="output"
+    PATH="/trainer.xhtml" TARGET="rules:#trainer.xhtml" TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="failed::#failedLoginView.xhtml"
+    NAME="output1" PATH="/failedLoginView.xhtml"
+    TARGET="rules:#failedLoginView.xhtml" TITLE="failed" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#failedLoginView.xhtml"
+  PATH="/failedLoginView.xhtml" SHAPE="256,177,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#trainer.xhtml" PATH="/trainer.xhtml"
+  SHAPE="256,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#trainer.xhtml:0" NAME="item"
+   PATH="/trainer.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="next::#failedLoginView.xhtml" NAME="output"
+    PATH="/failedLoginView.xhtml" TARGET="rules:#failedLoginView.xhtml"
+    TITLE="next" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="show::#failedLoginView.xhtml" NAME="output1"
+    PATH="/failedLoginView.xhtml" TARGET="rules:#failedLoginView.xhtml"
+    TITLE="show" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="show::#trainer.xhtml" NAME="output2"
+    PATH="/trainer.xhtml" TARGET="rules:#trainer.xhtml" TITLE="show" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="next::#trainer.xhtml" NAME="output3"
+    PATH="/trainer.xhtml" TARGET="rules:#trainer.xhtml" TITLE="next" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="logout::#logout.xhtml" NAME="output4"
+    PATH="/logout.xhtml" TARGET="rules:#logout.xhtml" TITLE="logout" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#" PATH="/" SHAPE="32,273,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#:0" NAME="item" PATH="/" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="::#failedLoginView.xhtml" NAME="output"
+    PATH="/failedLoginView.xhtml" TARGET="rules:#failedLoginView.xhtml"
+    TITLE="[any]" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#logout.xhtml" PATH="/logout.xhtml"
+  SHAPE="560,17,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>
